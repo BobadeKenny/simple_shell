@@ -1,7 +1,7 @@
 #include "main.h"
 
 
-int main(void)
+int main(int argc, char **argv)
 {
     char *line = NULL;
     size_t len = 0;
@@ -12,61 +12,34 @@ int main(void)
     int j = 0;
     char *search = " ";
 
-    prompt("#cisfun$ ");
-    while((reading = getline(&line, &len, stdin)) != -1)
+    if (argc >= 2)
     {
-        while (line[j])
+        if (execve(argv[1], argv, NULL) == -1)
         {
-	        j++;
+            perror("Error:");
         }
-        line[j - 1] = '\0';
-        token = strtok(line, search);
-        while (token != NULL)
-        {
-            tokens[i] = token;
-            token = strtok(NULL, search);
-            i++;
-        }
-        tokens[i] = NULL;
-        exec(tokens);
-        prompt("#cisfun$ ");
     }
-
-
-    return (0);
-}
-
-    /*pid_t my_pid;
-    char c = '$';
-    char *line = NULL;
-    size_t len = 0;
-    ssize_t reading;
-    char *token;
-    char *search = " ";
-    char *argv[] = {"/bin/ls", "-l", "/usr/", NULL};
-
-    my_pid = getpid();
-    write(1, &c, 1);
-    while((reading = getline(&line, &len, stdin)) != -1)
+    else
     {
-        printf("%d \n", reading);
+        prompt("#cisfun$ ");
+        while((reading = getline(&line, &len, stdin)) != -1)
+        {
+            while (line[j])
+            {
+                j++;
+            }
+            line[j - 1] = '\0';
             token = strtok(line, search);
             while (token != NULL)
             {
-            printf("%s \n", token);
-            token = strtok(NULL, search);
-            if (execve(argv[0], argv, NULL) == -1)
-    {
-        perror("Error:");
-    }
-
+                tokens[i] = token;
+                token = strtok(NULL, search);
+                i++;
             }
-    write(1, &c, 1);
-
+            tokens[i] = NULL;
+            exec(tokens);
+            prompt("#cisfun$ ");
+        }
     }
-    printf("%u\n", my_pid);
-   for (i = 1; i < argc; i++)
-    {
-        printf("%s\n", argv[i]);
-    }
-    printf("%u\n", argc);*/
+    return (0);
+}
