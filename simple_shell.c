@@ -1,22 +1,25 @@
 #include "main.h"
 
-int main(int argc, char *argv[])
-{
+
 int main(void)
 {
-    pid_t child_pid;
-    int status;
     char *line = NULL;
     size_t len = 0;
     ssize_t reading;
     char *token;
-    char *tokens[];
+    char **tokens = malloc(256 * sizeof(char));
     int i = 0;
+    int j = 0;
     char *search = " ";
 
     prompt("#cisfun$ ");
     while((reading = getline(&line, &len, stdin)) != -1)
     {
+        while (line[j])
+        {
+	        j++;
+        }
+        line[j - 1] = '\0';
         token = strtok(line, search);
         while (token != NULL)
         {
@@ -24,23 +27,8 @@ int main(void)
             token = strtok(NULL, search);
             i++;
         }
-        child_pid = fork();
-        if (child_pid == -1)
-        {
-            perror("Error:");
-            return (1);
-        }
-        if (child_pid == 0)
-        {
-            if (execve(tokens[0], tokens, NULL) == -1)
-            {
-                perror("Error:");
-            }
-        }
-        else
-        {
-            wait(&status);
-        }
+        tokens[i] = NULL;
+        exec(tokens);
         prompt("#cisfun$ ");
     }
 
@@ -82,5 +70,3 @@ int main(void)
         printf("%s\n", argv[i]);
     }
     printf("%u\n", argc);*/
-    return (0);
-}

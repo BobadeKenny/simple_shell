@@ -9,5 +9,6 @@
 #include <sys/wait.h>
 
 void prompt(char *str);
+int exec (char **tokens);
 
 #endif
