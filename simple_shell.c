@@ -21,24 +21,30 @@ int main(int argc, char **argv)
     }
     else
     {
-        prompt("#cisfun$ ");
-        while((reading = getline(&line, &len, stdin)) != -1)
+        while (1)
         {
-            while (line[j])
-            {
-                j++;
-            }
-            line[j - 1] = '\0';
-            token = strtok(line, search);
-            while (token != NULL)
-            {
-                tokens[i] = token;
-                token = strtok(NULL, search);
-                i++;
-            }
-            tokens[i] = NULL;
-            exec(tokens);
             prompt("#cisfun$ ");
+            if((reading = getline(&line, &len, stdin)) != -1)
+            {
+                while (line[j])
+                {
+                    j++;
+                }
+                line[j - 1] = '\0';
+                token = strtok(line, search);
+                while (token != NULL)
+                {
+                    tokens[i] = token;
+                    token = strtok(NULL, search);
+                    i++;
+                }
+                tokens[i] = NULL;
+                exec(tokens);
+            }
+            else
+            {
+                return (1);
+            }
         }
     }
     return (0);
