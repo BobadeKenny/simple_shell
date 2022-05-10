@@ -1,7 +1,7 @@
 #include "main.h"
 
 
-int main(int argc, char **argv)
+int main(int argc, char **argv, char **env)
 {
     char *line = NULL;
     size_t len = 0;
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
                     i++;
                 }
                 tokens[i] = NULL;
-                exec(tokens);
+                exec(tokens, env);
             }
             else
             {

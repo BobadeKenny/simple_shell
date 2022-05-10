@@ -10,6 +10,6 @@
 #include <sys/stat.h>
 
 void prompt(char *str);
-int exec (char **tokens);
+int exec (char **tokens, char **env);
 
 #endif

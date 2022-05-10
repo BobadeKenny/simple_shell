@@ -1,9 +1,23 @@
 #include "main.h"
 
-int exec (char **tokens)
+int exec (char **tokens, char **env)
 {
     pid_t child_pid;
     int status;
+    unsigned int i;
+
+    if (strncmp("env", tokens[0], 3) == 0)
+    {
+        i = 0;
+        while (env[i] != NULL)
+        {
+            prompt(environ[i]);
+            prompt("\n");
+            i++;
+        }
+        return (0);
+        
+    }
     if (strncmp("exit", tokens[0], 4) == 0)
     {
 		exit(0);
