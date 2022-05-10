@@ -4,6 +4,10 @@ int exec (char **tokens)
 {
     pid_t child_pid;
     int status;
+    if (strncmp("exit", tokens[0], 4) == 0)
+    {
+		exit(0);
+    }
     child_pid = fork();
     if (child_pid == -1)
     {

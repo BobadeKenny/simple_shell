@@ -18,6 +18,7 @@ int main(int argc, char **argv)
         {
             perror("Error:");
         }
+        return (1);
     }
     else
     {
