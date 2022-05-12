@@ -11,7 +11,7 @@ int exec (char **tokens, char **env)
         i = 0;
         while (env[i] != NULL)
         {
-            prompt(environ[i]);
+            prompt(env[i]);
             prompt("\n");
             i++;
         }
