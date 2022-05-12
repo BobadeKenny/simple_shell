@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * exec - executes commands
+ * @tokens: commands
+ * @env: environment variables
+ * Return: Always 0, -1 on error.
+ */
 int exec (char **tokens, char **env)
 {
     pid_t child_pid;

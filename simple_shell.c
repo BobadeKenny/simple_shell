@@ -1,6 +1,12 @@
 #include "main.h"
 
-
+/**
+ * main - simple shell
+ * @argc: number of arguments
+ * @argv: list of command line arguments
+ * @env: environment variable
+ * Return: Always 0, -1 on error.
+ */
 int main(int argc, char **argv, char **env)
 {
     char *line = NULL;
