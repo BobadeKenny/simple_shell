@@ -11,5 +11,7 @@
 
 void prompt(char *str);
 int exec (char **tokens, char **env);
+void findPath(char **tokens);
+int _strlen(const char *str);
 
 #endif
