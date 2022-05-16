@@ -34,12 +34,16 @@ int main(int argc, char **argv, char **env)
                 token = strtok(line, search);
                 while (token != NULL)
                 {
-                    printf("%s\n",token);
                     tokens[i] = token;
                     token = strtok(NULL, search);
+                    if (token == NULL)
+                    {
+                        break;
+                    }
                     i++;
+                    tokens[i] = token;
                 }
-                tokens[i] = NULL;
+                tokens[i + 1] = NULL;
                 exec(tokens,env);
             }
             else
