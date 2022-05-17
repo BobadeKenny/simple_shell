@@ -24,6 +24,10 @@ int exec (char **tokens, char **env)
         return (0);
 
     }
+    if (strncmp("cd", tokens[0], 2) == 0)
+    {
+      return (changedir(tokens[1]));
+    }
     if (strncmp("exit", tokens[0], 4) == 0)
     {
 		exit(0);
