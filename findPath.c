@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+ * findPath - find program in path
+ * @tokens: commands
+ * Return: none
+ */
 void findPath(char **tokens)
 {
     char **paths = malloc(1024 * sizeof(char));
