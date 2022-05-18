@@ -1,6 +1,11 @@
 #include "main.h"
 
 char lastdir[PATH_MAX];
+/**
+ * changedir - change current working directory
+ * @arg: path
+ * Return: Always 0, 1 on error.
+ */
 int changedir(char *arg)
 {
     char curdir[PATH_MAX];
