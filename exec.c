@@ -11,6 +11,7 @@ int exec (char **tokens, char **env)
     pid_t child_pid;
     int status;
     unsigned int i;
+    char *arg;
 
     if (strncmp("env", tokens[0], 3) == 0)
     {
@@ -26,11 +27,21 @@ int exec (char **tokens, char **env)
     }
     if (strncmp("cd", tokens[0], 2) == 0)
     {
-      return (changedir(tokens[1]));
+      arg = tokens[1];
+      if (!tokens[1])
+        arg = NULL;
+      return (changedir(arg));
     }
     if (strncmp("exit", tokens[0], 4) == 0)
     {
-		exit(0);
+      if (tokens[1])
+      {
+        exit(atoi(tokens[1]));
+      }
+      else
+      {
+		    exit(0);
+      }
     }
  child_pid = fork();
 
