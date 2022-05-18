@@ -22,9 +22,14 @@ void findPath(char **tokens)
     {
         paths[i] = currentPath;
         currentPath = strtok(NULL, search);
+        if (currentPath == NULL)
+        {
+            break;
+        }
         i++;
+        paths[i] = currentPath;
     }
-    paths[i] = NULL;
+    paths[i + 1] = NULL;
     while (paths[j])
     {
         buffer = strcat(strcat(paths[j], "/"), tokens[0]);

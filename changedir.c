@@ -32,6 +32,6 @@ int changedir(char *arg)
         perror("Error");
 		return (1);
     }
-    strcpy(lastdir, curdir);
+    _strcpy(lastdir, curdir);
     return (0);
 }

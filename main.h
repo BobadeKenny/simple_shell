@@ -14,6 +14,7 @@ void prompt(char *str);
 int exec (char **tokens, char **env);
 void findPath(char **tokens);
 int _strlen(const char *str);
+char *_strcpy(char *dest, char *src);
 int changedir(char *arg);
 
 #endif
