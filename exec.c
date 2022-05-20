@@ -6,7 +6,7 @@
  * @env: environment variables
  * Return: Always 0, -1 on error.
  */
-int exec (char **tokens, char **env)
+int exec (char **tokens, char **argv, char **env)
 {
     pid_t child_pid;
     int status;
@@ -52,7 +52,7 @@ int exec (char **tokens, char **env)
 	}
 	else if (child_pid == 0)
 	{
-		if (execve(tokens[0], tokens, NULL) == -1)
+		if (execve(tokens[0], argv, environ) == -1)
 		{
 			perror("Error");
 			exit(-1);

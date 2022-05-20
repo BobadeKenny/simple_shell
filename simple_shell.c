@@ -25,9 +25,11 @@ int main(int argc, char **argv, char **env)
     }
     else
     {
-        while (1)
-        {
-            prompt("#cisfun$ ");
+        do {
+            if (isatty(STDIN_FILENO))
+            {
+                prompt("#cisfun$ ");
+            }
             if((getline(&line, &len, stdin)) != -1)
             {
                 line[_strlen(line) - 1] = '\0';
@@ -44,13 +46,10 @@ int main(int argc, char **argv, char **env)
                     tokens[i] = token;
                 }
                 tokens[i + 1] = NULL;
-                exec(tokens,env);
-            }
-            else
-            {
-                return (1);
+               exec(tokens, argv, env);
             }
         }
+        while (1);
     }
     return (0);
 }
