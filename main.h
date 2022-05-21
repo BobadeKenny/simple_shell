@@ -11,12 +11,9 @@
 #include <limits.h>
 
 void prompt(char *str);
-int exec (char **tokens, char **argv, char **env);
-int findPath(char **tokens);
+int exec (char **tokens, char **env);
+void findPath(char **tokens);
 int _strlen(const char *str);
-char *str_addChar (char *str, char c);
-char **_strtok(char *str);
-unsigned int nbr_spaces(char *s);
 char *_strcpy(char *dest, char *src);
 int changedir(char *arg);
 
